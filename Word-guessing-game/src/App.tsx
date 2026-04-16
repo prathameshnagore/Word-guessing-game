@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import './index.css';
 import { WordDisplay } from './components/WordDisplay';
 import { Hint } from './components/Hint';
@@ -47,7 +47,7 @@ function App() {
       const newWrongLetters = !isCorrect ? [...prevState.wrongLetters, letter] : prevState.wrongLetters;
       const newAttemptsLeft = MAX_ATTEMPTS - newWrongLetters.length;
       
-      let newStatus = prevState.status;
+      let newStatus: GameState['status'] = prevState.status;
       if (isGameWon(prevState.word, newGuessedLetters)) {
         newStatus = "WON";
       } else if (newAttemptsLeft <= 0) {
